@@ -4,11 +4,6 @@ a proud member of Clan Ritchie
 */
 
 let hildebrandoDecision, hildebrandoCash;
-
-function validateNumber(hildebrandoDecision) {
-  const validateNumber = /\d/;
-  return validateNumber.test(hildebrandoDecision);
-}
 function caso1() {
   while (true) {
     hildebrandoDecision = prompt(
@@ -25,7 +20,7 @@ function caso1() {
         );
         return hildebrandoCash;
       case "2":
-        hildebrandoCash = -23000;
+        hildebrandoCash -= 23000;
         console.log(
           `El subway te dejo llenito y bien. \n\nTu saldo actual es $${hildebrandoCash} \n\nGastaste $23000`
         );
@@ -49,6 +44,46 @@ function caso1() {
   }
 }
 function caso2() {
+  let factorDeReduccion;
+  const altoPermitido = 55;
+  const largoPermitido = 40;
+  const anchoPermitido = 20;
+  const altoOriginal = 60;
+  const largoOriginal = 40;
+  const anchoOriginal = 20;
+  factorDeReduccion = [
+    altoPermitido / altoOriginal,
+    largoPermitido / largoOriginal,
+    anchoPermitido / anchoOriginal,
+  ];
+  factorDeReduccion = Math.min(...factorDeReduccion);
+  const nuevoAlto = altoOriginal * factorDeReduccion;
+  const nuevoLargo = largoOriginal * factorDeReduccion;
+  const nuevoAncho = anchoOriginal * factorDeReduccion;
+  console.log(
+    `Al llegar a la sala de espera en Medellin te das cuenta que la aerolinea que viaja a ⭐ 🛩 Macondo 🛩 ⭐ tiene una politica de equipaje de ${altoPermitido}cm (alto), ${largoPermitido}cm (largo) y ${anchoPermitido}cm (ancho) \n\n-Tu equipaje mide ${altoOriginal}cm (alto), ${largoOriginal}cm (largo) y ${anchoOriginal}cm (ancho) \n\n-Tuvimos que determinar un factor de reducciòn de ${factorDeReduccion.toFixed(
+      2
+    )} para que tu maleta cumpla con las politicas de equipaje de la aerolinea \n\n-Tus nuevas medidas de equipaje son ${nuevoAlto.toFixed(
+      2
+    )}cm (alto), ${nuevoLargo.toFixed(2)}cm (largo) y ${nuevoAncho.toFixed(
+      2
+    )}cm (ancho) \n\n-Tuviste que sacar de tu maleta ${(
+      altoOriginal * anchoOriginal * largoOriginal -
+      nuevoAlto * nuevoAncho * nuevoLargo
+    ).toFixed(2)}cm³ equivalente a 2 sacos que te pusiste encima`
+  );
+  alert(
+    `Al llegar a la sala de espera en Medellin te das cuenta que la aerolinea que viaja a ⭐ 🛩 Macondo 🛩 ⭐ tiene una politica de equipaje de ${altoPermitido}cm (alto), ${largoPermitido}cm (largo) y ${anchoPermitido}cm (ancho) \n\n-Tu equipaje mide ${altoOriginal}cm (alto), ${largoOriginal}cm (largo) y ${anchoOriginal}cm (ancho) \n\n-Tuvimos que determinar un factor de reducciòn de ${factorDeReduccion.toFixed(
+      2
+    )} para que tu maleta cumpla con las politicas de equipaje de la aerolinea \n\n-Tus nuevas medidas de equipaje son ${nuevoAlto.toFixed(
+      2
+    )}cm (alto), ${nuevoLargo.toFixed(2)}cm (largo) y ${nuevoAncho.toFixed(
+      2
+    )}cm (ancho) \n\n-Tuviste que sacar de tu maleta ${(
+      altoOriginal * anchoOriginal * largoOriginal -
+      nuevoAlto * nuevoAncho * nuevoLargo
+    ).toFixed(2)}cm³ equivalente a 6 sacos que te pusiste encima`
+  );
 }
 function menu() {
   hildebrandoCash = 2500000; // dinero que Hildebrando puede utilizar en su viaje
@@ -57,6 +92,7 @@ function menu() {
   );
   if (hildebrandoDecision) {
     caso1();
+    caso2();
   } else {
     alert(`El juego ha finalizado. Recarga la pàgina para volver a iniciar`);
   }
