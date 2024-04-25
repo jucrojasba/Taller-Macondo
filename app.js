@@ -85,6 +85,32 @@ function caso2() {
     ).toFixed(2)}cm³ equivalente a 6 sacos que te pusiste encima`
   );
 }
+function caso3(){
+  let net, decimales=[], password ='';
+  net = " ElPassEs: 01110010_01101001_01110111_01101001";
+  net = net.trim().split(' ')[1];
+  net= net.split('_');
+  function binaryToDecimal(value){
+    let decimal=0, values;
+    values = value.split('').reverse()
+    for (let index = 0; index < values.length; index++) {
+      decimal+=parseFloat(values[index])*(2**(index))
+    }
+    return decimal;
+  }
+  net.forEach(element => {
+    decimales.push(binaryToDecimal(element));
+  });
+  decimales.forEach(element=>{
+    password+=`${String.fromCharCode(element)}`;
+  });
+  hildebrandoCash-=50000;
+  console.log(`Son las 2 am y tu vuelo hacia Macondo sale a las 3 am. Te vas a conectar a la red del aeropuesto: \n\nElPassEs: 01110010_01101001_01110111_01101001 \n\nLa cual tiene la clave codificada en binarios \n\nComo asistente paso los binarios a decimales y obtengo: ${decimales}, codificandolo a ACSII la clave del wifi es: ${password}`);
+  console.log(`El aeropuerto te ha cobrado $50.000 por el tiempo de conexión wifi. \n\nTu saldo actual es ${hildebrandoCash}`);
+  alert(`Son las 2 am y tu vuelo hacia Macondo sale a las 3 am. Te vas a conectar a la red del aeropuesto: \n\nElPassEs: 01110010_01101001_01110111_01101001 \n\nLa cual tiene la clave codificada en binarios \n\nComo asistente paso los binarios a decimales y obtengo: ${decimales}, codificandolo a ACSII la clave del wifi es: ${password}`)
+  alert(`El aeropuerto te ha cobrado $50.000 por el tiempo de conexión wifi. \n\nTu saldo actual es ${hildebrandoCash}`)
+  return hildebrandoCash;
+}
 function menu() {
   hildebrandoCash = 2500000; // dinero que Hildebrando puede utilizar en su viaje
   hildebrandoDecision = confirm(
@@ -93,6 +119,7 @@ function menu() {
   if (hildebrandoDecision) {
     caso1();
     caso2();
+    caso3();
   } else {
     alert(`El juego ha finalizado. Recarga la pàgina para volver a iniciar`);
   }
