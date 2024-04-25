@@ -111,6 +111,12 @@ function caso3(){
   alert(`El aeropuerto te ha cobrado $50.000 por el tiempo de conexión wifi. \n\nTu saldo actual es ${hildebrandoCash}`)
   return hildebrandoCash;
 }
+function caso4(){
+  const originalExpresion = "Taxi me puede llevar al hotel mariposas amarillas";
+  const traslateExpresion = originalExpresion.replace(/[aeiou]/g,'i');
+  console.log(`La expresión \n"${originalExpresion}" \n\nTraducida al Macondiano es \n"${traslateExpresion}"`);
+  alert(`La expresión \n"${originalExpresion}" \n\nTraducida al Macondiano es \n"${traslateExpresion}"`);
+}
 function menu() {
   hildebrandoCash = 2500000; // dinero que Hildebrando puede utilizar en su viaje
   hildebrandoDecision = confirm(
@@ -120,6 +126,7 @@ function menu() {
     caso1();
     caso2();
     caso3();
+    caso4();
   } else {
     alert(`El juego ha finalizado. Recarga la pàgina para volver a iniciar`);
   }
