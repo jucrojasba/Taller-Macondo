@@ -85,37 +85,254 @@ function caso2() {
     ).toFixed(2)}cm³ equivalente a 6 sacos que te pusiste encima`
   );
 }
-function caso3(){
-  let net, decimales=[], password ='';
+function caso3() {
+  let net,
+    decimales = [],
+    password = "";
   net = " ElPassEs: 01110010_01101001_01110111_01101001";
-  net = net.trim().split(' ')[1];
-  net= net.split('_');
-  function binaryToDecimal(value){
-    let decimal=0, values;
-    values = value.split('').reverse()
+  net = net.trim().split(" ")[1];
+  net = net.split("_");
+  function binaryToDecimal(value) {
+    let decimal = 0,
+      values;
+    values = value.split("").reverse();
     for (let index = 0; index < values.length; index++) {
-      decimal+=parseFloat(values[index])*(2**(index))
+      decimal += parseFloat(values[index]) * 2 ** index;
     }
     return decimal;
   }
-  net.forEach(element => {
+  net.forEach((element) => {
     decimales.push(binaryToDecimal(element));
   });
-  decimales.forEach(element=>{
-    password+=`${String.fromCharCode(element)}`;
+  decimales.forEach((element) => {
+    password += `${String.fromCharCode(element)}`;
   });
-  hildebrandoCash-=50000;
-  console.log(`Son las 2 am y tu vuelo hacia Macondo sale a las 3 am. Te vas a conectar a la red del aeropuesto: \n\nElPassEs: 01110010_01101001_01110111_01101001 \n\nLa cual tiene la clave codificada en binarios \n\nComo asistente paso los binarios a decimales y obtengo: ${decimales}, codificandolo a ACSII la clave del wifi es: ${password}`);
-  console.log(`El aeropuerto te ha cobrado $50.000 por el tiempo de conexión wifi. \n\nTu saldo actual es ${hildebrandoCash}`);
-  alert(`Son las 2 am y tu vuelo hacia Macondo sale a las 3 am. Te vas a conectar a la red del aeropuesto: \n\nElPassEs: 01110010_01101001_01110111_01101001 \n\nLa cual tiene la clave codificada en binarios \n\nComo asistente paso los binarios a decimales y obtengo: ${decimales}, codificandolo a ACSII la clave del wifi es: ${password}`)
-  alert(`El aeropuerto te ha cobrado $50.000 por el tiempo de conexión wifi. \n\nTu saldo actual es ${hildebrandoCash}`)
+  hildebrandoCash -= 50000;
+  console.log(
+    `Son las 2 am y tu vuelo hacia Macondo sale a las 3 am. Te vas a conectar a la red del aeropuesto: \n\nElPassEs: 01110010_01101001_01110111_01101001 \n\nLa cual tiene la clave codificada en binarios \n\nComo asistente paso los binarios a decimales y obtengo: ${decimales}, codificandolo a ACSII la clave del wifi es: ${password}`
+  );
+  console.log(
+    `El aeropuerto te ha cobrado $50.000 por el tiempo de conexión wifi. \n\nTu saldo actual es $${hildebrandoCash}`
+  );
+  alert(
+    `Son las 2 am y tu vuelo hacia Macondo sale a las 3 am. Te vas a conectar a la red del aeropuesto: \n\nElPassEs: 01110010_01101001_01110111_01101001 \n\nLa cual tiene la clave codificada en binarios \n\nComo asistente paso los binarios a decimales y obtengo: ${decimales}, codificandolo a ACSII la clave del wifi es: ${password}`
+  );
+  alert(
+    `El aeropuerto te ha cobrado $50.000 por el tiempo de conexión wifi. \n\nTu saldo actual es $${hildebrandoCash}`
+  );
   return hildebrandoCash;
 }
-function caso4(){
+function caso4() {
   const originalExpresion = "Taxi me puede llevar al hotel mariposas amarillas";
-  const traslateExpresion = originalExpresion.replace(/[aeiou]/g,'i');
-  console.log(`La expresión \n"${originalExpresion}" \n\nTraducida al Macondiano es \n"${traslateExpresion}"`);
-  alert(`La expresión \n"${originalExpresion}" \n\nTraducida al Macondiano es \n"${traslateExpresion}"`);
+  const traslateExpresion = originalExpresion.replace(/[aeiou]/g, "i");
+  console.log(
+    `Acabas de llegar a Macondo y te das cuenta que todos hablan diferente y necesitas pedir un taxi. \n\nLa expresión \n"${originalExpresion}" \n\nTraducida al Macondiano es \n"${traslateExpresion}"`
+  );
+  alert(
+    `Acabas de llegar a Macondo y te das cuenta que todos hablan diferente y necesitas pedir un taxi. \n\nLa expresión \n"${originalExpresion}" \n\nTraducida al Macondiano es \n"${traslateExpresion}"`
+  );
+}
+function caso5() {
+  const game = ["piedra", "papel", "tijera"];
+  let message;
+  let hildebrandoPlayer = game[Math.floor(Math.random() * 3)];
+  let taxistaPlayer = game[Math.floor(Math.random() * 3)];
+  switch (true) {
+    case hildebrandoPlayer == "piedra" && taxistaPlayer == "tijera":
+      message = `Ganaste, no debes de pagar $300.000`;
+      break;
+    case hildebrandoPlayer == "piedra" && taxistaPlayer == "papel":
+      message = `Perdiste, debes de pagar $300.000`;
+      hildebrandoCash -= 300000;
+      break;
+    case hildebrandoPlayer == "papel" && taxistaPlayer == "tijera":
+      message = `Perdiste, debes de pagar $300.000`;
+      hildebrandoCash -= 300000;
+      break;
+    case hildebrandoPlayer == "papel" && taxistaPlayer == "piedra":
+      message = `Ganaste, no debes de pagar $300.000`;
+      break;
+    case hildebrandoPlayer == "tijera" && taxistaPlayer == "piedra":
+      message = `Perdiste, debes de pagar $300.000`;
+      hildebrandoCash -= 300000;
+      break;
+    case hildebrandoPlayer == "tijera" && taxistaPlayer == "papel":
+      message = `Ganaste, no debes de pagar $300.000`;
+      break;
+    default:
+      message = `Empataste, entonces no pasa nada`;
+      break;
+  }
+  alert(
+    `Al llegar al hotel el taxista te cobra $300.000. Quedas impresionado y decides jugar piedra, papel o tijera con el taxista. En caso de que ganes o empates no pagaras la carrera.\n\nSorpresa! Tu sacaste: ${hildebrandoPlayer} y el taxista saco: ${taxistaPlayer}.\n\n${message}. Tu saldo es $${hildebrandoCash}`
+  );
+  console.log(
+    `Al llegar al hotel el taxista te cobra $300.000. Quedas impresionado y decides jugar piedra, papel o tijera con el taxista. En caso de que ganes o empates no pagaras la carrera.\n\nSorpresa! Tu sacaste: ${hildebrandoPlayer} y el taxista saco: ${taxistaPlayer}.\n\n${message}. Tu saldo es $${hildebrandoCash}`
+  );
+  return hildebrandoCash;
+}
+function caso6() {
+  let activitiesDecision,
+    message,
+    daysOnVacation = 0,
+    flag1 = true,
+    flag2,
+    expense = 2500000 - hildebrandoCash;
+  while (flag1 && daysOnVacation < 4) {
+    hildebrandoDecision = prompt(
+      "En el hotel notas que hay una codigo de vestimenta para cada actividad \n\n1. Amarillo para ir a la piscina \n2. Verde para caminatas \n3. Rojo para actividades de playa \n4. Azul para actividades dentro del hotel \n\n¿Còmo deseas vestir hoy? Escribe 1, 2, 3, o 4: "
+    );
+    switch (hildebrandoDecision) {
+      case "1":
+        flag2 = true;
+        while (flag2) {
+          activitiesDecision = prompt(
+            "Felicidades! Decidiste vestir amarillo para ir a la pisicina. Puedes decidir entre las siguientes actividades: \n\n1. Meterte a la piscina \n2. Broncearte y no meterte a la piscina \n\n¿Que deseas hacer? Escribe 1 o 2:"
+          );
+          switch (activitiesDecision) {
+            case "1":
+              message = `Lo sentimos, al meterte a la piscina comenzaste a sentirte ahogado por el exceso de cloro y moriste. Las vacaciones han terminado`;
+              daysOnVacation++;
+              flag1 = false;
+              flag2 = false;
+              break;
+            case "2":
+              message = `La pasaste super bien en tu dia de piscina`;
+              daysOnVacation++;
+              flag2 = false;
+              break;
+
+            default:
+              alert(`Opciòn invàlida, porfavor ingresa una opciòn vàlida`);
+              break;
+          }
+        }
+        alert(
+          `${message}\n\nDìas en Macondo: ${daysOnVacation} \n\nTu saldo es: $${hildebrandoCash}\n\n Tus gastos son: $${
+            2500000 - hildebrandoCash
+          }`
+        );
+        break;
+      case "2":
+        flag2 = true;
+        while (flag2) {
+          activitiesDecision = prompt(
+            "Felicidades! Decidiste vestir verde para ir a la caminata. Mientras caminabas te sentiste cansado. Puedes decidir entre las siguientes actividades: \n\n1. Devolverte para el hotel \n2. Continuar con la caminara \n\n¿Que deseas hacer? Escribe 1 o 2:"
+          );
+          switch (activitiesDecision) {
+            case "1":
+              message = `Lo sentimos, al devolverte para el hotel solo, te perdiste de noche. Las vacaiones no finalizan pero pierdes este dìa regresando al hotel. La caminata te costo $120.000`;
+              daysOnVacation++;
+              expense += 120000;
+              hildebrandoCash -= expense;
+              flag2 = false;
+              break;
+            case "2":
+              message = `La pasaste super bien, llegaste a una cascada y te tomaste fotos divinas! La caminata te costo $120.000`;
+              daysOnVacation++;
+              expense += 120000;
+              hildebrandoCash -= expense;
+              flag2 = false;
+              break;
+
+            default:
+              alert(`Opciòn invàlida, porfavor ingresa una opciòn vàlida`);
+              break;
+          }
+        }
+        alert(
+          `${message}\n\nDìas en Macondo: ${daysOnVacation} \n\nTu saldo es: $${hildebrandoCash}\n\n Tus gastos son: $${expense}`
+        );
+        break;
+      case "3":
+        flag2 = true;
+        while (flag2) {
+          activitiesDecision = prompt(
+            "Felicidades! Decidiste vestir de rojo para ir a la playa. Puedes decidir entre las siguientes actividades: \n\n1. Voleibol \n2. Nadar en el mar \n3. Tomar cocteles \n\n¿Que deseas hacer? Escribe 1, 2 o 3:"
+          );
+          switch (activitiesDecision) {
+            case "1":
+              message = `Felicidades, la pasaste super rico jugando voleibol. El alquiler de la malla te costo $80.000`;
+              daysOnVacation++;
+              expense += 80000;
+              hildebrandoCash -= expense;
+              flag2 = false;
+              break;
+            case "2":
+              message = `Felicidades! La pasaste super rico nadando en el mar y ademàs montaste en moto. El alquiler de la moto te costo $200.000`;
+              daysOnVacation++;
+              expense += 200000;
+              hildebrandoCash -= expense;
+              flag2 = false;
+              break;
+            case "3":
+              message = `Los cocteles costaron $60.000 \n\nLo sentimos, al tomar los cocteles te dio un fuerte dolor de cabeza y comienzas a perder la visiòn ¡Chirrinchi adulterado!. Te devolviste para Bogotà de emergencia y las vacaciones han terminado 😞`;
+              daysOnVacation++;
+              expense += 60000;
+              hildebrandoCash -= expense;
+              flag1 = false;
+              flag2 = false;
+              break;
+
+            default:
+              alert(`Opciòn invàlida, porfavor ingresa una opciòn vàlida`);
+              break;
+          }
+        }
+        alert(
+          `${message}\n\nDìas en Macondo: ${daysOnVacation} \n\nTu saldo es: $${hildebrandoCash}\n\n Tus gastos son: $${expense}`
+        );
+        break;
+      case "4":
+        flag2 = true;
+        while (flag2) {
+          activitiesDecision = prompt(
+            "Felicidades! Decidiste vestir de azul para realizar actividades dentro del hotel. Puedes decidir entre las siguientes actividades: \n\n1. Bingo \n2. Bailar \n3. Casino y apuesta \n\n¿Que deseas hacer? Escribe 1, 2 o 3:"
+          );
+          switch (activitiesDecision) {
+            case "1":
+              message = `Felicidades, ganaste $1'000.000 en el bingo.`;
+              hildebrandoCash += 1000000;
+              daysOnVacation++;
+              flag2 = false;
+              break;
+            case "2":
+              message = `Felicidades! Bailaste y la pasaste muy bien`;
+              daysOnVacation++;
+              flag2 = false;
+              break;
+            case "3":
+              expense = hildebrandoCash * 0.9;
+              hildebrandoCash -= expense;
+              message = `Lo sentimos, perdiste $${expense} solo te quedò para el pasaje de regeso. Las vacaciones han terminado`;
+              daysOnVacation++;
+              flag1 = false;
+              flag2 = false;
+              break;
+
+            default:
+              alert(`Opciòn invàlida, porfavor ingresa una opciòn vàlida`);
+              break;
+          }
+        }
+        alert(
+          `${message}\n\nDìas en Macondo: ${daysOnVacation} \n\nTu saldo es: $${hildebrandoCash}\n\n Tus gastos son: $${expense}`
+        );
+        break;
+      default:
+        alert("Opciòn invàlida, porfavor ingresa una opciòn vàlida");
+        break;
+    }
+  }
+  if (daysOnVacation == 4) {
+    alert(
+      `Han pasado 4 dìas y tus vacaciones han terminado\n\nTu saldo es: $${hildebrandoCash}\n\n Tus gastos son: $${expense} \n\nFin del juego!!`
+    );
+  } else {
+    alert(
+      `Fin del juego!!! \n\nDìas en Macondo: ${daysOnVacation} \n\nTu saldo es: $${hildebrandoCash}\n\n Tus gastos son: $${expense}`
+    );
+  }
 }
 function menu() {
   hildebrandoCash = 2500000; // dinero que Hildebrando puede utilizar en su viaje
@@ -127,8 +344,11 @@ function menu() {
     caso2();
     caso3();
     caso4();
+    caso5();
+    caso6();
   } else {
     alert(`El juego ha finalizado. Recarga la pàgina para volver a iniciar`);
   }
 }
+
 menu();
